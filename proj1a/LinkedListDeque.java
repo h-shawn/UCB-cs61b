@@ -40,7 +40,7 @@ public class LinkedListDeque<T> {
     }
     public void printDeque() {
         Node cur = head.next;
-        while(cur != head){
+        while (cur != head) {
             System.out.print(cur.item + " ");
             cur = cur.next;
         }
@@ -81,7 +81,7 @@ public class LinkedListDeque<T> {
         }
         return recursive(node.next, index - 1);
     }
-    public T getRecursive(int index){
+    public T getRecursive(int index) {
         if (index >= size) {
             return null;
         }

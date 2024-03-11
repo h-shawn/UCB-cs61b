@@ -39,7 +39,7 @@ public class ArrayDeque<T> {
         int newp = length / 4;
         while (p != last) {
             newArray[newp] = array[p];
-            p = forward(p, length / 2);
+            p = forward(p, length);
             newp = forward(newp, length / 2);
         }
         first = length / 4;
@@ -97,7 +97,7 @@ public class ArrayDeque<T> {
         size--;
         return array[last];
     }
-    public T get(int index){
+    public T get(int index) {
         if (index >= size) {
             return null;
         }
