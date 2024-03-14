@@ -1,8 +1,6 @@
 // TODO: Make sure to make this class a part of the synthesizer package
 // package <package name>;
 package synthesizer;
-import synthesizer.AbstractBoundedQueue;
-
 import java.util.Iterator;
 
 //TODO: Make sure to make this class and all of its methods public
@@ -66,6 +64,9 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
      */
     public T peek() {
         // TODO: Return the first item. None of your instance variables should change.
+        if (isEmpty()) {
+            throw new RuntimeException("Ring buffer underflow");
+        }
         return rb[first];
     }
 
