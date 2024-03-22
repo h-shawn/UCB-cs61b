@@ -1,6 +1,6 @@
 # UCB-cs61b
 
-## Proj 0 
+## Proj0 
 
 Simulating the motion of N objects in a plane, accounting for the gravitational forces mutually affecting each object as demonstrated by Sir Isaac Newton’s [Law of Universal Gravitation](http://en.wikipedia.org/wiki/Newton's_law_of_universal_gravitation).
 
