@@ -18,7 +18,7 @@ public class Room {
     private final int minHeight = 3;
     private final int maxConnectNum = 3;
 
-    public Room (Random r, int worldWidth, int worldHeight) {
+    public Room(Random r, int worldWidth, int worldHeight) {
         width = randomNum(r, minWidth, maxWidth);
         height = randomNum(r, minHeight, maxHeight);
         int X = randomNum(r, 1, worldWidth - width - 1);
