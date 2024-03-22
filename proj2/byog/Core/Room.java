@@ -96,7 +96,7 @@ public class Room {
             }
         }
 
-        if (candidates.size() == 0) {
+        if (candidates.isEmpty()) {
             return;
         }
 
