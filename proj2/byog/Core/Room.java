@@ -96,6 +96,10 @@ public class Room {
             }
         }
 
+	if (candidates.size() == 0) {
+	    return;
+	}
+
         int connectNum = RandomUtils.uniform(r, 1, maxConnectNum);
         for (int i = 0; i < connectNum; i++) {
             int option = RandomUtils.uniform(r, 0, candidates.size());

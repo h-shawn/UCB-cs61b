@@ -24,7 +24,7 @@ public class Game {
     /* Feel free to change the width and height. */
     public static final int WIDTH = 80;
     public static final int HEIGHT = 30;
-    private static final int ROOMNUM = 15;
+    private static final int ROOMNUM = 10;
 
     private Position player;
 
