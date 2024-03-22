@@ -62,7 +62,6 @@ public class Game {
         // Fill out this method to run the game using the input passed in,
         // and return a 2D tile representation of the world that would have been
         // drawn if the same inputs had been given to playWithKeyboard().
-        ter.initialize(WIDTH, HEIGHT);
         String cmd = input.toLowerCase();
         TETile[][] finalWorldFrame = null;
         if (cmd.charAt(0) == 'n') {
@@ -72,7 +71,6 @@ public class Game {
         } else if (cmd.charAt(0) == 'q') {
             System.exit(0);
         }
-        ter.renderFrame(finalWorldFrame);
         return finalWorldFrame;
     }
 
@@ -120,7 +118,6 @@ public class Game {
 
     private TETile[][] loadGame(String input) {
         TETile[][] finalWorldFrame = getSavedGame();
-        ter.renderFrame(finalWorldFrame);
         play(finalWorldFrame, input.substring(1));
         return finalWorldFrame;
     }
