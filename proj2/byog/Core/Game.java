@@ -1,15 +1,23 @@
 package byog.Core;
 
-import byog.SaveDemo.World;
 import byog.TileEngine.TERenderer;
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 import edu.princeton.cs.introcs.StdDraw;
 
-import java.awt.*;
-import java.io.*;
-import java.util.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.Stack;
 
 public class Game {
     TERenderer ter = new TERenderer();
@@ -51,7 +59,7 @@ public class Game {
      * @return the 2D TETile[][] representing the state of the world
      */
     public TETile[][] playWithInputString(String input) {
-        // TODO: Fill out this method to run the game using the input passed in,
+        // Fill out this method to run the game using the input passed in,
         // and return a 2D tile representation of the world that would have been
         // drawn if the same inputs had been given to playWithKeyboard().
         ter.initialize(WIDTH, HEIGHT);
@@ -202,8 +210,9 @@ public class Game {
                 case ':':
                     if (i + 1 < playString.length() && playString.charAt(i + 1) == 'q') {
                         saveGame(world);
-                        break;
+                        return;
                     }
+                    break;
                 default:
             }
         }
@@ -245,6 +254,7 @@ public class Game {
                             break;
                         }
                     }
+                    break;
                 default:
             }
         }
@@ -291,8 +301,9 @@ public class Game {
     private void removeDeadHeads(TETile[][] world) {
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
-                if (world[i][j].equals(Tileset.SAND))
+                if (world[i][j].equals(Tileset.SAND)) {
                     world[i][j] = Tileset.NOTHING;
+                }
             }
         }
 

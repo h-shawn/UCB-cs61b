@@ -2,7 +2,6 @@ package byog.Core;
 import byog.TileEngine.TETile;
 import byog.TileEngine.Tileset;
 
-import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.Random;
 import java.util.Stack;
 
 public class Position implements Serializable {
-    @Serial
     private static final long serialVersionUID = 1L;
     private int X;
     private int Y;
@@ -131,14 +129,18 @@ public class Position implements Serializable {
         }
 
         if (X - 1 >= 0 && X + 1 < worldWidth) {
-            boolean flag1 = world[X - 1][Y].equals(Tileset.FLOOR) && world[X + 1][Y].equals(Tileset.NOTHING);
-            boolean flag2 = world[X + 1][Y].equals(Tileset.FLOOR) && world[X - 1][Y].equals(Tileset.NOTHING);
-            return flag1 || flag2;
+            boolean flag1 = world[X - 1][Y].equals(Tileset.FLOOR);
+            boolean flag2 = world[X + 1][Y].equals(Tileset.NOTHING);
+            boolean flag3 = world[X + 1][Y].equals(Tileset.FLOOR);
+            boolean flag4 = world[X - 1][Y].equals(Tileset.NOTHING);
+            return (flag1 && flag2) || (flag3 && flag4);
         }
         if (Y - 1 >= 0 && Y + 1 < worldHeight) {
-            boolean flag1 = world[X][Y - 1].equals(Tileset.FLOOR) && world[X][Y + 1].equals(Tileset.NOTHING);
-            boolean flag2 = world[X][Y + 1].equals(Tileset.FLOOR) && world[X][Y - 1].equals(Tileset.NOTHING);
-            return flag1 || flag2;
+            boolean flag1 = world[X][Y - 1].equals(Tileset.FLOOR);
+            boolean flag2 = world[X][Y + 1].equals(Tileset.NOTHING);
+            boolean flag3 = world[X][Y + 1].equals(Tileset.FLOOR);
+            boolean flag4 = world[X][Y - 1].equals(Tileset.NOTHING);
+            return (flag1 && flag2) || (flag3 && flag4);
         }
         return false;
     }
