@@ -9,6 +9,10 @@ public class PercolationStats {
 
     // perform T independent experiments on an N-by-N grid
     public PercolationStats(int N, int T, PercolationFactory pf) {
+        if (N <= 0 || T <= 0) {
+            throw new IllegalArgumentException();
+        }
+
         this.T = T;
         results = new double[T];
         for (int i = 0; i < T; i++) {
@@ -44,4 +48,10 @@ public class PercolationStats {
     public double confidenceHigh() {
         return mean() + 1.96 * stddev() / Math.sqrt(T);
     }
+
+     public static void main(String[] args) {
+         PercolationStats ps = new PercolationStats(20, 10, new PercolationFactory());
+         System.out.println(ps.mean());
+         System.out.println(ps.stddev());
+     }
 }

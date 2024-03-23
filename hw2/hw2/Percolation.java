@@ -5,11 +5,16 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 public class Percolation {
     private final int N;
     private final boolean[][] grids;
-    private final WeightedQuickUnionUF uni;
+    private final WeightedQuickUnionUF uPercolate;
+    private final WeightedQuickUnionUF uFull;
     private int numOpen;
 
     // create N-by-N grid, with all sites initially blocked
     public Percolation(int N) {
+        if (N <= 0) {
+            throw new IllegalArgumentException();
+        }
+
         this.N = N;
         numOpen = 0;
         grids = new boolean[N][N];
@@ -19,7 +24,8 @@ public class Percolation {
             }
         }
 
-        uni = new WeightedQuickUnionUF(N * N + 2);
+        uPercolate = new WeightedQuickUnionUF(N * N + 2);
+        uFull = new WeightedQuickUnionUF(N * N + 1);
     }
 
     // open the site (row, col) if it is not open already
@@ -44,7 +50,7 @@ public class Percolation {
         if (!isOpen(row, col)) {
             return false;
         }
-        return uni.connected(N * N, row * N + col);
+        return uFull.connected(N * N, row * N + col);
     }
 
     // number of open sites
@@ -54,7 +60,7 @@ public class Percolation {
 
     // does the system percolate?
     public boolean percolates() {
-        return uni.connected(N * N, N * N + 1);
+        return uPercolate.connected(N * N, N * N + 1);
     }
 
     private void checkRange(int row, int col) {
@@ -67,24 +73,32 @@ public class Percolation {
         int A = row * N + col;
         // Top = N * N, bottom = N * N + 1
         if (row == 0) {
-            uni.union(N * N, A);
+            uPercolate.union(N * N, A);
+            uFull.union(N * N, A);
         }
         if (row == N - 1) {
-            uni.union(N * N + 1, A);
+            uPercolate.union(N * N + 1, A);
         }
 
         if (row - 1 >= 0 && grids[row - 1][col]) {
-            uni.union(A, A - N);
+            uPercolate.union(A, A - N);
+            uFull.union(A, A - N);
         }
         if (row + 1 < N && grids[row + 1][col]) {
-            uni.union(A, A + N);
+            uPercolate.union(A, A + N);
+            uFull.union(A, A + N);
         }
         if (col - 1 >= 0 && grids[row][col - 1]) {
-            uni.union(A, A - 1);
+            uPercolate.union(A, A - 1);
+            uFull.union(A, A - 1);
         }
         if (col + 1 < N && grids[row][col + 1]) {
-            uni.union(A, A + 1);
+            uPercolate.union(A, A + 1);
+            uFull.union(A, A + 1);
         }
     }
 
+    // use for unit testing (not required)
+    public static void main(String[] args) {
+    }
 }
