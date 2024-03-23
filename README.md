@@ -4,7 +4,7 @@
 
 Simulating the motion of N objects in a plane, accounting for the gravitational forces mutually affecting each object as demonstrated by Sir Isaac Newton’s [Law of Universal Gravitation](http://en.wikipedia.org/wiki/Newton's_law_of_universal_gravitation).
 
-<img src="./pics/planets.png" width="40%">
+<img src="./pics/planets.png" width="30%" class="aligncenter">
 
 ## Proj1
 
@@ -21,6 +21,6 @@ Simulating the motion of N objects in a plane, accounting for the gravitational 
   - Reference: [Rooms and Mazes: A Procedural Dungeon Generator](https://journal.stuffwithstuff.com/2014/12/21/rooms-and-mazes/)
 - Phase 2: Interactivity
 
-<img src="./pics/game.png" width="80%">
+<img src="./pics/game.png" width="80%" class="aligncenter">
 
-<img src="./pics/game2.png" width="80%">
+<img src="./pics/game2.png" width="80%" class="aligncenter">
