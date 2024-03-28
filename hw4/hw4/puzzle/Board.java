@@ -100,6 +100,7 @@ public class Board implements WorldState {
         return manhattan();
     }
 
+    @Override
     public boolean equals(Object y) {
         if (y == null || y.getClass() != this.getClass()) {
             return false;
@@ -120,7 +121,8 @@ public class Board implements WorldState {
         return true;
     }
 
-    public int hashcode() {
+    @Override
+    public int hashCode() {
         return super.hashCode();
     }
 
@@ -131,7 +133,7 @@ public class Board implements WorldState {
         s.append(N + "\n");
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                s.append(String.format("%2d ",tileAt(i,j)));
+                s.append(String.format("%2d ", tileAt(i, j)));
             }
             s.append("\n");
         }
