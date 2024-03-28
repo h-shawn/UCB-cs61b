@@ -2,8 +2,9 @@ package hw4.puzzle;
 import edu.princeton.cs.algs4.Queue;
 
 public class Board implements WorldState {
-    private int[][] tiles;
-    private int N;
+    private final int[][] tiles;
+    private final int N;
+    private static final int BLANK = 0;
 
     public Board(int[][] tiles) {
         if (tiles == null || tiles[0] == null || tiles.length != tiles[0].length) {
@@ -34,7 +35,6 @@ public class Board implements WorldState {
         int hug = size();
         int bug = -1;
         int zug = -1;
-        int BLANK = 0;
         for (int rug = 0; rug < hug; rug++) {
             for (int tug = 0; tug < hug; tug++) {
                 if (tileAt(rug, tug) == BLANK) {
@@ -120,15 +120,18 @@ public class Board implements WorldState {
         return true;
     }
 
+    public int hashcode() {
+        return super.hashCode();
+    }
+
     /** Returns the string representation of the board. 
       * Uncomment this method. */
     public String toString() {
         StringBuilder s = new StringBuilder();
-        int N = size();
         s.append(N + "\n");
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
-                s.append(String.format("%2d ", tileAt(i,j)));
+                s.append(String.format("%2d ",tileAt(i,j)));
             }
             s.append("\n");
         }
